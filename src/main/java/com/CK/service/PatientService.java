@@ -35,4 +35,11 @@ public class PatientService {
         }
         return true;
     }
+    public void save(String idNo, String name) {
+        Patient patient = Patient.builder()
+                .name(name)
+                .idNo(idNo)
+                .build();
+       patientRepository.save(patient);
+    }
 }

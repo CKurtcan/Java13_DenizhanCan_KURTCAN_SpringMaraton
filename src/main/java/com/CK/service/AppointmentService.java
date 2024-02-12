@@ -24,6 +24,7 @@ import java.util.Random;
 @RequiredArgsConstructor
 public class AppointmentService {
     private final AppointmentRepository appointmentRepository;
+    private final PatientService patientService;
 
     public MakeAppointmentResponseDto create(MakeAppointmentRequestDto dto) {
         Optional<Appointment> optionalAppointment = appointmentRepository.findByDateAndTime(dto.getDate(),dto.getTime());
@@ -37,6 +38,7 @@ public class AppointmentService {
         appointment.setAppointmentCode(CodeGenerator.generateCode());
         appointment.setStatus(EStatus.FULL);
         appointmentRepository.save(appointment);
+        patientService.save(dto.getName(), String.valueOf(dto.getPatientId()));
         return AppointmentMapper.INSTANCE.fromAppointmentToMakeAppointmentResponseDto(appointment);
     }
 

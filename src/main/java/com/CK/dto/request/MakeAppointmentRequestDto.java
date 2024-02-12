@@ -14,6 +14,7 @@ public class MakeAppointmentRequestDto {
     Long patientId;
     Long doctorId;
     String idNo;
+    String name;
     String date;
     String time;
 }
