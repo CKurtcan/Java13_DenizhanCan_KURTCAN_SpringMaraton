@@ -17,6 +17,7 @@ import static com.CK.constants.RestApiUrls.*;
 @RequiredArgsConstructor
 public class PatientController {
     private final PatientService patientService;
+    //önceden oluşturdupum için login ve register methodlarını silmedim koda ekstra bir etkisi yoktur
 
     @PostMapping(REGISTER)
     public ResponseEntity<Boolean> register(@RequestBody RegisterRequestDto dto){
